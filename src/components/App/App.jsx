@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ContactList from '../ContactList/ContactList';
-import './App.module.css';
+import SearchBox from '../SearchBox/SearchBox';
+import css from './App.module.css';
 
 const initialContacts = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -11,6 +12,7 @@ const initialContacts = [
 
 function App() {
   const [contacts, setContacts] = useState(initialContacts);
+  const [search, setSearch] = useState('');
 
   const deleteContact = contactId => {
     setContacts(prevContacts =>
@@ -18,13 +20,17 @@ function App() {
     );
   };
 
+  const visibleContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
-      <div>
+      <div className={css.wrapper}>
         <h1>Phonebook</h1>
-        {/* <ContactForm />
-        <SearchBox /> */}
-        <ContactList contacts={contacts} onDelete={deleteContact} />
+        {/* <ContactForm /> */}
+        <SearchBox value={search} onFilter={setSearch} />
+        <ContactList contacts={visibleContacts} onDelete={deleteContact} />
       </div>
     </>
   );
