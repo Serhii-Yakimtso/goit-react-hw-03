@@ -1,7 +1,7 @@
 import { FaPhone, FaUser } from 'react-icons/fa6';
 import css from './Contact.module.css';
 
-export default function Contact({ data: { id, name, number } }) {
+export default function Contact({ data: { id, name, number }, onDelete }) {
   return (
     <>
       <div className={css.wrapper}>
@@ -15,7 +15,9 @@ export default function Contact({ data: { id, name, number } }) {
           {number}
         </p>
       </div>
-      <button className={css.btn}>Delete</button>
+      <button className={css.btn} onClick={() => onDelete(id)}>
+        Delete
+      </button>
     </>
   );
 }
