@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 8px;
+  width: 250px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  padding: 8px;
+  height: fit-content;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+}
