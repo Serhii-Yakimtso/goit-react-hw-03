@@ -1,13 +1,11 @@
 import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 
 const startValues = {
   name: '',
   phone: '',
-  id: nanoid(),
 };
 
 const ContactSchema = Yup.object().shape({
@@ -21,7 +19,7 @@ const ContactSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export default function ContactForm(onAdd) {
+export default function ContactForm({ onAdd }) {
   const nameId = useId();
   const phoneId = useId();
 
