@@ -5,7 +5,7 @@ import css from './ContactForm.module.css';
 
 const startValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const ContactSchema = Yup.object().shape({
@@ -13,7 +13,7 @@ const ContactSchema = Yup.object().shape({
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  phone: Yup.string()
+  number: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
@@ -21,9 +21,10 @@ const ContactSchema = Yup.object().shape({
 
 export default function ContactForm({ onAdd }) {
   const nameId = useId();
-  const phoneId = useId();
+  const numberId = useId();
 
   const handleSubmit = (values, actions) => {
+    console.log(values);
     onAdd(values);
     actions.resetForm();
   };
@@ -41,9 +42,14 @@ export default function ContactForm({ onAdd }) {
           <ErrorMessage className={css.error} name="name" component="span" />
         </div>
         <div className={css.wrapper}>
-          <label htmlFor={phoneId}>Number</label>
-          <Field className={css.input} type="text" name="phone" id={phoneId} />
-          <ErrorMessage className={css.error} name="phone" component="span" />
+          <label htmlFor={numberId}>Number</label>
+          <Field
+            className={css.input}
+            type="text"
+            name="number"
+            id={numberId}
+          />
+          <ErrorMessage className={css.error} name="number" component="span" />
         </div>
         <button className={css.btn} type="submit">
           Add contact
