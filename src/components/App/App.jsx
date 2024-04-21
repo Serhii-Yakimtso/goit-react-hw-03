@@ -40,6 +40,10 @@ function App() {
   );
 
   useEffect(() => {
+    if (contacts.length === 0) {
+      window.localStorage.removeItem('saved-contacts');
+      return;
+    }
     window.localStorage.setItem('saved-contacts', JSON.stringify(contacts));
   }, [contacts]);
 
